@@ -48,7 +48,7 @@ Name1 = Gui.TextLabel({
 	Parent = Frame1
 })
 
-Close = Gui.ImageButon({
+Close = Gui.ImageButton({
 	Name = "Close",
 	BackgroundTransparency = 1,
 	Position = UDim2.new(0.856, 0, 0, 0),
@@ -72,7 +72,7 @@ F1TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F1Button = Gui.ImageButon({
+F1Button = Gui.ImageButton({
 	Name = "ActivateFButton",
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
@@ -102,7 +102,7 @@ F2TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F2Button = Gui.ImageButon({
+F2Button = Gui.ImageButton({
 	Name = "ActivateFButton",
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
@@ -132,7 +132,7 @@ F3TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F3QuestionMark = Gui.ImageButon({
+F3QuestionMark = Gui.ImageButton({
 	Name = "QM",
 	BackgroundTransparency = 1,
 	BackgroundColor3 = Color3.new(0, 0, 0),
@@ -143,7 +143,7 @@ F3QuestionMark = Gui.ImageButon({
 	Parent = Frame1
 })
 
-F3Button = Gui.ImageButon({
+F3Button = Gui.ImageButton({
 	Name = "ActivateFButton",
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
@@ -173,7 +173,7 @@ F4TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F4QuestionMark = Gui.ImageButon({
+F4QuestionMark = Gui.ImageButton({
 	Name = "QM",
 	BackgroundTransparency = 1,
 	BackgroundColor3 = Color3.new(0, 0, 0),
@@ -184,7 +184,7 @@ F4QuestionMark = Gui.ImageButon({
 	Parent = Frame1
 })
 
-F4Button = Gui.ImageButon({
+F4Button = Gui.ImageButton({
 	Name = "ActivateFButton",
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
@@ -232,7 +232,7 @@ Close2 = Gui.TextButton({
 	Parent = Frame2
 })
 
-QM1 = Gui.ImageButon({
+QM1 = Gui.ImageButton({
 	Name = "QM",
 	BackgroundTransparency = 1,
 	BackgroundColor3 = Color3.new(0, 0, 0),
