@@ -12,7 +12,7 @@ if not MM2Settings then
 	Player:Kick("Invalid script settings") 
 end
 Resolution = {workspace.Camera.ViewportSize.X, workspace.Camera.ViewportSize.Y}
-Gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShittCoder2/Gui/refs/heads/main/script"))()
+Gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShittCoder2/MurderMystery/refs/heads/main/f1"))()
 GetConnections = getconnections or get_signal_cons
 Parts = Instance.new("Folder")
 
