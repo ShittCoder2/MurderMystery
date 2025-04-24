@@ -18,23 +18,22 @@ Parts = Instance.new("Folder")
 
 ScreenGuiMain = Gui.ScreenGUI({Name = "MM2",ResetOnSpawn = false,Parent = CoreGui})
 
-Frame1 = {
-	Gui.Frame({
-		Name = "Main",
-		AnchorPoint = Vector2.new(.5, .5),
-		BackgroundColor3 = Color3.new(0, 0, 0),
-		Position = UDim2.new(.5, 0, .5, 0),
-		Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0),
-		ZIndex = 1,
-		Parent = ScreenGuiMain,
-		Draggable_ = true
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = Frame1[1]
-	})
-}
+Frame1 = Gui.Frame({
+	Name = "Main",
+	AnchorPoint = Vector2.new(.5, .5),
+	BackgroundColor3 = Color3.new(0, 0, 0),
+	Position = UDim2.new(.5, 0, .5, 0),
+	Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0),
+	ZIndex = 1,
+	Parent = ScreenGuiMain,
+	Draggable_ = true
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = Frame1[1]
+})
 
 Name1 = Gui.TextLabel({
 	Name = "ScriptMainName",
@@ -73,23 +72,22 @@ F1TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F1Button = {
-	Gui.ImageButon({
-		Name = "ActivateFButton",
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.new(1, 0, 0),
-		Position = UDim2.new(0.856, 0, 0.2, 0),
-		Size = UDim2.new(0.129, 0, 0.2, 0),
-		Image = "rbxassetid://11242915823",
-		ImageColor3 = Color3.new(1, 1, 1),
-		Parent = Frame1
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = F1Button[1]
-	})
-}
+F1Button = Gui.ImageButon({
+	Name = "ActivateFButton",
+	BackgroundTransparency = 0,
+	BackgroundColor3 = Color3.new(1, 0, 0),
+	Position = UDim2.new(0.856, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://11242915823",
+	ImageColor3 = Color3.new(1, 1, 1),
+	Parent = Frame1
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = F1Button[1]
+})
 
 F2TextLabel = Gui.TextLabel({
 	Name = "F",
@@ -104,23 +102,22 @@ F2TextLabel = Gui.TextLabel({
 	Parent = Frame1
 })
 
-F2Button = {
-	Gui.ImageButon({
-		Name = "ActivateFButton",
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.new(1, 0, 0),
-		Position = UDim2.new(0.856, 0, 0.4, 0),
-		Size = UDim2.new(0.129, 0, 0.2, 0),
-		Image = "rbxassetid://11242915823",
-		ImageColor3 = Color3.new(1, 1, 1),
-		Parent = Frame1
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = F2Button[1]
-	})
-}
+F2Button = Gui.ImageButon({
+	Name = "ActivateFButton",
+	BackgroundTransparency = 0,
+	BackgroundColor3 = Color3.new(1, 0, 0),
+	Position = UDim2.new(0.856, 0, 0.4, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://11242915823",
+	ImageColor3 = Color3.new(1, 1, 1),
+	Parent = Frame1
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = F2Button[1]
+})
 
 F3TextLabel = Gui.TextLabel({
 	Name = "F",
@@ -146,23 +143,22 @@ F3QuestionMark = Gui.ImageButon({
 	Parent = Frame1
 })
 
-F3Button = {
-	Gui.ImageButon({
-		Name = "ActivateFButton",
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.new(1, 0, 0),
-		Position = UDim2.new(0.856, 0, 0.6, 0),
-		Size = UDim2.new(0.129, 0, 0.2, 0),
-		Image = "rbxassetid://11242915823",
-		ImageColor3 = Color3.new(1, 1, 1),
-		Parent = Frame1
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = F3Button[1]
-	})
-}
+F3Button = Gui.ImageButon({
+	Name = "ActivateFButton",
+	BackgroundTransparency = 0,
+	BackgroundColor3 = Color3.new(1, 0, 0),
+	Position = UDim2.new(0.856, 0, 0.6, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://11242915823",
+	ImageColor3 = Color3.new(1, 1, 1),
+	Parent = Frame1
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = F3Button[1]
+})
 
 F4TextLabel = Gui.TextLabel({
 	Name = "F",
@@ -188,42 +184,40 @@ F4QuestionMark = Gui.ImageButon({
 	Parent = Frame1
 })
 
-F4Button = {
-	Gui.ImageButon({
-		Name = "ActivateFButton",
-		BackgroundTransparency = 0,
-		BackgroundColor3 = Color3.new(1, 0, 0),
-		Position = UDim2.new(0.856, 0, 0.8, 0),
-		Size = UDim2.new(0.129, 0, 0.2, 0),
-		Image = "rbxassetid://11242915823",
-		ImageColor3 = Color3.new(1, 1, 1),
-		Parent = Frame1
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = F4Button[1]
-	})
-}
+F4Button = Gui.ImageButon({
+	Name = "ActivateFButton",
+	BackgroundTransparency = 0,
+	BackgroundColor3 = Color3.new(1, 0, 0),
+	Position = UDim2.new(0.856, 0, 0.8, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://11242915823",
+	ImageColor3 = Color3.new(1, 1, 1),
+	Parent = Frame1
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = F4Button[1]
+})
 
 --Question mark gui
-Frame2 = {
-	Gui.Frame({
-		Name = "QM1",
-		AnchorPoint = Vector2.new(.5, .5),
-		BackgroundColor3 = Color3.new(0, 0, 0),
-		Position = UDim2.new(.5, 0, .5, 0),
-		Size = UDim2.new(250 / Resolution[1], 0, 250 / Resolution[2], 0),
-		ZIndex = 2,
-		Parent = ScreenGuiMain,
-		Draggable_ = true
-	}),
-	Gui.UICorner({
-		Name = "UiCorner",
-		CornerRadius = UDim.new(0, 12),
-		Parent = Frame2[1]
-	})
-}
+Frame2 = Gui.Frame({
+	Name = "QM1",
+	AnchorPoint = Vector2.new(.5, .5),
+	BackgroundColor3 = Color3.new(0, 0, 0),
+	Position = UDim2.new(.5, 0, .5, 0),
+	Size = UDim2.new(250 / Resolution[1], 0, 250 / Resolution[2], 0),
+	ZIndex = 2,
+	Parent = ScreenGuiMain,
+	Draggable_ = true
+})
+
+Gui.UICorner({
+	Name = "UiCorner",
+	CornerRadius = UDim.new(0, 12),
+	Parent = Frame2[1]
+})
 
 Close2 = Gui.TextButton({
 	Name = "xfn",
@@ -263,7 +257,7 @@ QMText = Gui.TextLabel({
 	Parent = Frame1
 })
 
-J = {F1Button[1], F2Button[2], F3Button[3], F4Button[4], F1TextLabel, F2TextLabel, F3TextLabel, F4TextLabel, F3QuestionMark, F4QuestionMark}
+J = {F1Button, F2Button, F3Button, F4Button, F1TextLabel, F2TextLabel, F3TextLabel, F4TextLabel, F3QuestionMark, F4QuestionMark}
 
 if GetConnections then
 	for i,v in pairs(GetConnections(Player.Idled)) do
@@ -300,10 +294,10 @@ function EnableAutoFarm()
 	if not AS then
 		AS = true
 		AIS = true
-		F1Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		F1Button.BackgroundColor3 = Color3.new(0, 1, 0)
 	else
 		AS = false
-		F1Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		F1Button.BackgroundColor3 = Color3.new(1, 0, 0)
 		EndAutofarm:Fire()
 	end
 end
@@ -419,11 +413,11 @@ end
 function CollectRareEggsFunction()
 	if not CollectR then
 		CollectR = true
-		F2Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		F2Button.BackgroundColor3 = Color3.new(0, 1, 0)
 		CollectrRareEggs()
 	else
 		CollectR = false
-		F2Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		F2Button.BackgroundColor3 = Color3.new(1, 0, 0)
 	end
 end
 
@@ -431,10 +425,10 @@ KASM = false
 function KillAllMurder()
 	if not KASM then
 		KASM = true
-		F3Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		F3Button.BackgroundColor3 = Color3.new(0, 1, 0)
 	else
 		KASM = false
-		F3Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		F3Button.BackgroundColor3 = Color3.new(1, 0, 0)
 	end
 end
 
@@ -464,11 +458,11 @@ ImproveFPSS = false
 function ImproveFPSN1()
 	if not ImproveFPSS then
 		ImproveFPSS = true
-		F4Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		F4Button.BackgroundColor3 = Color3.new(0, 1, 0)
 		RunService:Set3dRenderingEnabled(false)
 	else
 		ImproveFPSS = false
-		F4Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		F4Button.BackgroundColor3 = Color3.new(1, 0, 0)
 		RunService:Set3dRenderingEnabled(true)
 	end
 end
@@ -479,20 +473,20 @@ infotext = {
 }
 function QM1O()
 	QMText.Text = infotext[1]
-	Frame2[1].Visible = true
+	Frame2.Visible = true
 end
 
 function QM2O()
 	QMText.Text = infotext[2]
-	Frame2[1].Visible = true
+	Frame2.Visible = true
 end
 
 Close.MouseButton1Click:Connect(CloseOpenMain)
 Close2.MouseButton1Click:Connect(CloseQM)
-F1Button[1].MouseButton1Click:Connect(EnableAutoFarm)
-F2Button[1].MouseButton1Click:Connect(CollectRareEggsFunction)
-F3Button[1].MouseButton1Click:Connect(KillAllMurder)
-F4Button[1].MouseButton1Click:Connect(ImproveFPSN1)
+F1Button.MouseButton1Click:Connect(EnableAutoFarm)
+F2Button.MouseButton1Click:Connect(CollectRareEggsFunction)
+F3Button.MouseButton1Click:Connect(KillAllMurder)
+F4Button.MouseButton1Click:Connect(ImproveFPSN1)
 F3QuestionMark.MouseButton1Click:Connect(QM1O)
 F4QuestionMark.MouseButton1Click:Connect(QM2O)
 
