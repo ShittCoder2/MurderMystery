@@ -32,7 +32,7 @@ Frame1 = Gui.Frame({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = Frame1[1]
+	Parent = Frame1
 })
 
 Name1 = Gui.TextLabel({
@@ -86,7 +86,7 @@ F1Button = Gui.ImageButon({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = F1Button[1]
+	Parent = F1Button
 })
 
 F2TextLabel = Gui.TextLabel({
@@ -116,7 +116,7 @@ F2Button = Gui.ImageButon({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = F2Button[1]
+	Parent = F2Button
 })
 
 F3TextLabel = Gui.TextLabel({
@@ -157,7 +157,7 @@ F3Button = Gui.ImageButon({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = F3Button[1]
+	Parent = F3Button
 })
 
 F4TextLabel = Gui.TextLabel({
@@ -198,7 +198,7 @@ F4Button = Gui.ImageButon({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = F4Button[1]
+	Parent = F4Button
 })
 
 --Question mark gui
@@ -216,7 +216,7 @@ Frame2 = Gui.Frame({
 Gui.UICorner({
 	Name = "UiCorner",
 	CornerRadius = UDim.new(0, 12),
-	Parent = Frame2[1]
+	Parent = Frame2
 })
 
 Close2 = Gui.TextButton({
