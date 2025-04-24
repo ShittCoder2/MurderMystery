@@ -67,7 +67,7 @@ F1TextLabel = Gui.TextLabel({
 	Font = Enum.Font.Garamond,
 	Text = "Collect eggs",
 	ZIndex = 1,
-	TextColor3 = Color3.new(0, 0, 0),
+	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
 	Parent = Frame1
 })
@@ -77,7 +77,7 @@ F1Button = Gui.ImageButton({
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
 	Position = UDim2.new(0.856, 0, 0.2, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://11242915823",
 	ImageColor3 = Color3.new(1, 1, 1),
 	Parent = Frame1
@@ -97,7 +97,7 @@ F2TextLabel = Gui.TextLabel({
 	Font = Enum.Font.Garamond,
 	Text = "Collect rare eggs",
 	ZIndex = 1,
-	TextColor3 = Color3.new(0, 0, 0),
+	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
 	Parent = Frame1
 })
@@ -107,7 +107,7 @@ F2Button = Gui.ImageButton({
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
 	Position = UDim2.new(0.856, 0, 0.4, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://11242915823",
 	ImageColor3 = Color3.new(1, 1, 1),
 	Parent = Frame1
@@ -127,7 +127,7 @@ F3TextLabel = Gui.TextLabel({
 	Font = Enum.Font.Garamond,
 	Text = "Kill all(Murder)",
 	ZIndex = 1,
-	TextColor3 = Color3.new(0, 0, 0),
+	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
 	Parent = Frame1
 })
@@ -137,7 +137,7 @@ F3QuestionMark = Gui.ImageButton({
 	BackgroundTransparency = 1,
 	BackgroundColor3 = Color3.new(0, 0, 0),
 	Position = UDim2.new(0.713, 0, 0.608, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://117559295934079",
 	ImageColor3 = Color3.new(0.494118, 0.988235, 0),
 	Parent = Frame1
@@ -148,7 +148,7 @@ F3Button = Gui.ImageButton({
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
 	Position = UDim2.new(0.856, 0, 0.6, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://11242915823",
 	ImageColor3 = Color3.new(1, 1, 1),
 	Parent = Frame1
@@ -168,7 +168,7 @@ F4TextLabel = Gui.TextLabel({
 	Font = Enum.Font.Garamond,
 	Text = "Kill all(Murder)",
 	ZIndex = 1,
-	TextColor3 = Color3.new(0, 0, 0),
+	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
 	Parent = Frame1
 })
@@ -178,7 +178,7 @@ F4QuestionMark = Gui.ImageButton({
 	BackgroundTransparency = 1,
 	BackgroundColor3 = Color3.new(0, 0, 0),
 	Position = UDim2.new(0.713, 0, 0.8, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://117559295934079",
 	ImageColor3 = Color3.new(0.494118, 0.988235, 0),
 	Parent = Frame1
@@ -189,7 +189,7 @@ F4Button = Gui.ImageButton({
 	BackgroundTransparency = 0,
 	BackgroundColor3 = Color3.new(1, 0, 0),
 	Position = UDim2.new(0.856, 0, 0.8, 0),
-	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Size = UDim2.new(0.129, 0, 0.18, 0),
 	Image = "rbxassetid://11242915823",
 	ImageColor3 = Color3.new(1, 1, 1),
 	Parent = Frame1
@@ -209,8 +209,9 @@ Frame2 = Gui.Frame({
 	Position = UDim2.new(.5, 0, .5, 0),
 	Size = UDim2.new(250 / Resolution[1], 0, 250 / Resolution[2], 0),
 	ZIndex = 2,
+	Visible = false,
 	Parent = ScreenGuiMain,
-	Draggable_ = true
+	Draggable_ = true,
 })
 
 Gui.UICorner({
@@ -254,7 +255,7 @@ QMText = Gui.TextLabel({
 	ZIndex = 2,
 	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
-	Parent = Frame1
+	Parent = Frame2
 })
 
 J = {F1Button, F2Button, F3Button, F4Button, F1TextLabel, F2TextLabel, F3TextLabel, F4TextLabel, F3QuestionMark, F4QuestionMark}
@@ -433,7 +434,7 @@ function KillAllMurder()
 end
 
 function CloseQM()
-	Frame2[1].Visible = false
+	Frame2.Visible = false
 end
 
 function CloseOpenMain()
@@ -441,13 +442,13 @@ function CloseOpenMain()
 		for _, u in J do
 			u.Visible = false
 		end
-		TweenService:Create(Frame1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(50 / Resolution[1], 0, 50 / Resolution[2], 0)})
-		TweenService:Create(Name1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 1, 0)})
-		TweenService:Create(Close, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 1, 0), Rotation = -90})
+		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(50 / Resolution[1], 0, 50 / Resolution[2], 0)})
+		TweenService:Create(Name1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 1, 0)})
+		TweenService:Create(Close, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 1, 0), Rotation = -90})
 	else
-		TweenService:Create(Frame1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0)})
-		TweenService:Create(Name1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 0.2, 0)})
-		TweenService:Create(Close, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 0.2, 0), Rotation = 90})
+		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0)})
+		TweenService:Create(Name1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 0.2, 0)})
+		TweenService:Create(Close, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 0.2, 0), Rotation = 90})
 		for _, u in J do
 			u.Visible = true
 		end
