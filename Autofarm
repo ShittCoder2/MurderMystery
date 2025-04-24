@@ -249,12 +249,12 @@ QMText = Gui.TextLabel({
 	Name = "F",
 	BackgroundTransparency = 1,
 	Position = UDim2.new(0, 0, 0.8, 0),
-	Size = UDim2.new(1, 0, 0.8, 0),
+	Size = UDim2.new(1, 0, 0.2, 0),
 	Font = Enum.Font.Garamond,
 	Text = "TEXTHERE",
 	ZIndex = 2,
 	TextColor3 = Color3.new(1, 1, 1),
-	TextSize = 40,
+	TextScaled = true,
 	Parent = Frame2
 })
 
@@ -310,6 +310,7 @@ function CSP()
 	w.Position = Player.Character.HumanoidRootPart.Position + Vector3.new(0, 200, 0)
 	w.Transparency = 1
 	w.Parent = Parts
+	w.Anchored = true
 	SPP = w.CFrame * CFrame.new(0, 6, 0)
 end
 
@@ -444,7 +445,7 @@ function CloseOpenMain()
 		for _, u in J do
 			u.Visible = false
 		end
-		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(50 / Resolution[1], 0, 50 / Resolution[2], 0)}):Play()
+		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 50 / Resolution[2], 0)}):Play()
 		TweenService:Create(Name1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 1, 0)}):Play()
 		TweenService:Create(Close, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 1, 0), Rotation = -90}):Play()
 	else
