@@ -1,0 +1,510 @@
+if not game:IsLoaded() then game.Loaded:Wait() end --check if game loaded
+Player = game.Players.LocalPlayer
+Players = game.Players
+CoreGui = game.CoreGui
+EndAutofarm = Instance.new("BindableEvent")
+RunService = game:GetService("RunService")
+TweenService = game:GetService("TweenService")
+CoinCollectedEvent = game.ReplicatedStorage.Remotes.Gameplay.CoinCollected
+RoundStartEvent = game.ReplicatedStorage.Remotes.Gameplay.RoundStart
+RoundEndEvent = game.ReplicatedStorage.Remotes.Gameplay.RoundEndFade
+if not MM2Settings then 
+	Player:Kick("Invalid script settings") 
+end
+Resolution = {workspace.Camera.ViewportSize.X, workspace.Camera.ViewportSize.Y}
+Gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShittCoder2/Gui/refs/heads/main/script"))()
+GetConnections = getconnections or get_signal_cons
+Parts = Instance.new("Folder")
+
+ScreenGuiMain = Gui.ScreenGUI({Name = "MM2",ResetOnSpawn = false,Parent = CoreGui})
+
+Frame1 = {
+	Gui.Frame({
+		Name = "Main",
+		AnchorPoint = Vector2.new(.5, .5),
+		BackgroundColor3 = Color3.new(0, 0, 0),
+		Position = UDim2.new(.5, 0, .5, 0),
+		Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0),
+		ZIndex = 1,
+		Parent = ScreenGuiMain,
+		Draggable_ = true
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = Frame1[1]
+	})
+}
+
+Name1 = Gui.TextLabel({
+	Name = "ScriptMainName",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0, 0),
+	Size = UDim2.new(0.858, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "MM2",
+	ZIndex = 1,
+	TextColor3 = Color3.new(0, 0, 0),
+	TextScaled = true,
+	Parent = Frame1
+})
+
+Close = Gui.ImageButon({
+	Name = "Close",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0.856, 0, 0, 0),
+	Size = UDim2.new(0.143, 0, 0.2, 0),
+	Rotation = 90,
+	Image = "rbxassetid://80086932329366",
+	ImageColor3 = Color3.new(0.478431, 0.478431, 0.478431),
+	Parent = Frame1
+})
+
+F1TextLabel = Gui.TextLabel({
+	Name = "F",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0.2, 0),
+	Size = UDim2.new(0.715, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "Collect eggs",
+	ZIndex = 1,
+	TextColor3 = Color3.new(0, 0, 0),
+	TextSize = 40,
+	Parent = Frame1
+})
+
+F1Button = {
+	Gui.ImageButon({
+		Name = "ActivateFButton",
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.new(1, 0, 0),
+		Position = UDim2.new(0.856, 0, 0.2, 0),
+		Size = UDim2.new(0.129, 0, 0.2, 0),
+		Image = "rbxassetid://11242915823",
+		ImageColor3 = Color3.new(1, 1, 1),
+		Parent = Frame1
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = F1Button[1]
+	})
+}
+
+F2TextLabel = Gui.TextLabel({
+	Name = "F",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0.4, 0),
+	Size = UDim2.new(0.715, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "Collect rare eggs",
+	ZIndex = 1,
+	TextColor3 = Color3.new(0, 0, 0),
+	TextSize = 40,
+	Parent = Frame1
+})
+
+F2Button = {
+	Gui.ImageButon({
+		Name = "ActivateFButton",
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.new(1, 0, 0),
+		Position = UDim2.new(0.856, 0, 0.4, 0),
+		Size = UDim2.new(0.129, 0, 0.2, 0),
+		Image = "rbxassetid://11242915823",
+		ImageColor3 = Color3.new(1, 1, 1),
+		Parent = Frame1
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = F2Button[1]
+	})
+}
+
+F3TextLabel = Gui.TextLabel({
+	Name = "F",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0.6, 0),
+	Size = UDim2.new(0.715, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "Kill all(Murder)",
+	ZIndex = 1,
+	TextColor3 = Color3.new(0, 0, 0),
+	TextSize = 40,
+	Parent = Frame1
+})
+
+F3QuestionMark = Gui.ImageButon({
+	Name = "QM",
+	BackgroundTransparency = 1,
+	BackgroundColor3 = Color3.new(0, 0, 0),
+	Position = UDim2.new(0.713, 0, 0.608, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://117559295934079",
+	ImageColor3 = Color3.new(0.494118, 0.988235, 0),
+	Parent = Frame1
+})
+
+F3Button = {
+	Gui.ImageButon({
+		Name = "ActivateFButton",
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.new(1, 0, 0),
+		Position = UDim2.new(0.856, 0, 0.6, 0),
+		Size = UDim2.new(0.129, 0, 0.2, 0),
+		Image = "rbxassetid://11242915823",
+		ImageColor3 = Color3.new(1, 1, 1),
+		Parent = Frame1
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = F3Button[1]
+	})
+}
+
+F4TextLabel = Gui.TextLabel({
+	Name = "F",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0.8, 0),
+	Size = UDim2.new(0.715, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "Kill all(Murder)",
+	ZIndex = 1,
+	TextColor3 = Color3.new(0, 0, 0),
+	TextSize = 40,
+	Parent = Frame1
+})
+
+F4QuestionMark = Gui.ImageButon({
+	Name = "QM",
+	BackgroundTransparency = 1,
+	BackgroundColor3 = Color3.new(0, 0, 0),
+	Position = UDim2.new(0.713, 0, 0.8, 0),
+	Size = UDim2.new(0.129, 0, 0.2, 0),
+	Image = "rbxassetid://117559295934079",
+	ImageColor3 = Color3.new(0.494118, 0.988235, 0),
+	Parent = Frame1
+})
+
+F4Button = {
+	Gui.ImageButon({
+		Name = "ActivateFButton",
+		BackgroundTransparency = 0,
+		BackgroundColor3 = Color3.new(1, 0, 0),
+		Position = UDim2.new(0.856, 0, 0.8, 0),
+		Size = UDim2.new(0.129, 0, 0.2, 0),
+		Image = "rbxassetid://11242915823",
+		ImageColor3 = Color3.new(1, 1, 1),
+		Parent = Frame1
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = F4Button[1]
+	})
+}
+
+--Question mark gui
+Frame2 = {
+	Gui.Frame({
+		Name = "QM1",
+		AnchorPoint = Vector2.new(.5, .5),
+		BackgroundColor3 = Color3.new(0, 0, 0),
+		Position = UDim2.new(.5, 0, .5, 0),
+		Size = UDim2.new(250 / Resolution[1], 0, 250 / Resolution[2], 0),
+		ZIndex = 2,
+		Parent = ScreenGuiMain,
+		Draggable_ = true
+	}),
+	Gui.UICorner({
+		Name = "UiCorner",
+		CornerRadius = UDim.new(0, 12),
+		Parent = Frame2[1]
+	})
+}
+
+Close2 = Gui.TextButton({
+	Name = "xfn",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0.8, 0, 0, 0),
+	Size = UDim2.new(0.2, 0, 0.2, 0),
+	Font = Enum.Font.Garamond,
+	Text = "X",
+	ZIndex = 2,
+	TextColor3 = Color3.new(1, 0, 0),
+	TextScaled = true,
+	Parent = Frame2
+})
+
+QM1 = Gui.ImageButon({
+	Name = "QM",
+	BackgroundTransparency = 1,
+	BackgroundColor3 = Color3.new(0, 0, 0),
+	Position = UDim2.new(0, 0, 0, 0),
+	Size = UDim2.new(0.2, 0, 0.2, 0),
+	Image = "rbxassetid://117559295934079",
+	ImageColor3 = Color3.new(0.494118, 0.988235, 0),
+	ZIndex = 2,
+	Parent = Frame2
+})
+
+QMText = Gui.TextLabel({
+	Name = "F",
+	BackgroundTransparency = 1,
+	Position = UDim2.new(0, 0, 0.8, 0),
+	Size = UDim2.new(1, 0, 0.8, 0),
+	Font = Enum.Font.Garamond,
+	Text = "TEXTHERE",
+	ZIndex = 2,
+	TextColor3 = Color3.new(1, 1, 1),
+	TextSize = 40,
+	Parent = Frame1
+})
+
+J = {F1Button[1], F2Button[2], F3Button[3], F4Button[4], F1TextLabel, F2TextLabel, F3TextLabel, F4TextLabel, F3QuestionMark, F4QuestionMark}
+
+if GetConnections then
+	for i,v in pairs(GetConnections(Player.Idled)) do
+		if v["Disable"] then
+			v["Disable"](v)
+		elseif v["Disconnect"] then
+			v["Disconnect"](v)
+		end
+	end
+elseif cloneref then
+	local a = cloneref(game:GetService("VirtualUser"))
+	Players.LocalPlayer.Idled:Connect(function()
+		a:CaptureController()
+		a:ClickButton2(Vector2.new())
+	end)
+end
+
+function CContainer()
+	for _, v in workspace:GetChildren() do
+		if v:FindFirstChild("CoinContainer") and v:IsA("Model") then
+			return v:FindFirstChild("CoinContainer")
+		end
+	end
+	return false
+end
+
+AS = false
+AIS = false
+SPP = nil
+FullEggBag = false
+CurrentCoinType = "Egg"
+speedDIVIDE = 19
+function EnableAutoFarm()
+	if not AS then
+		AS = true
+		AIS = true
+		F1Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+	else
+		AS = false
+		F1Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		EndAutofarm:Fire()
+	end
+end
+
+
+function CSP()
+	local w = Instance.new("Part")
+	w.Size = Vector3.new(20, 1, 20)
+	w.Position = Player.Character.HumanoidRootPart.Position + Vector3.new(0, 200, 0)
+	w.Transparency = 1
+	w.Parent = Parts
+	SPP = w.CFrame * CFrame.new(0, 6, 0)
+end
+
+function TP(Pos)
+	if Player.Character then
+		if Player.Character:FindFirstChild("HumanoidRootPart") then
+			Player.Character.HumanoidRootPart.CFrame = Pos
+		end
+	end
+end
+
+CoinCollectedEvent.OnClientEvent:Connect(function(cointype, current, max)
+	if cointype == CurrentCoinType then
+		AIS = true
+	end
+	if cointype == CurrentCoinType and tonumber(current) == tonumber(max) then
+		AIS = false
+		FullEggBag = true
+		CSP()
+		TP(SPP)
+		print("Rare eggs...")
+	end
+end)
+
+function FindNearestCoin(container)
+	local coin = nil
+	local magn = math.huge
+	for _, v in pairs(container:GetChildren()) do
+		if v:GetAttribute("CoinID") == CurrentCoinType and v:FindFirstChild("TouchInterest") then
+			if Player.Character then
+				if Player.Character:FindFirstChild("HumanoidRootPart") then
+					if math.abs((Player.Character.HumanoidRootPart.Position - v.Position).Magnitude) < magn then
+						coin = v
+						magn = math.abs((Player.Character.HumanoidRootPart.Position - v.Position).Magnitude)
+					end
+				end
+			end
+		end
+	end
+	local gg = {coin, magn}
+	return gg
+end
+
+RoundStartEvent.OnClientEvent:Connect(function()
+	AIS = true
+	FullEggBag = false
+end)
+
+RoundEndEvent.OnClientEvent:Connect(function()
+	AIS = false
+	FullEggBag = false
+end)
+
+spawn(function()
+	while true do
+		if AS and AIS and Player.Character and CContainer() and Player:GetAttribute("Alive") then
+			if FindNearestCoin(CContainer())[1] ~= nil then
+				local dds = FindNearestCoin(CContainer())
+				if dds[2] > 175 then TP(dds[1].CFrame); continue end
+				local strg = TweenService:Create(Player.Character.HumanoidRootPart, TweenInfo.new(dds[2] / speedDIVIDE, Enum.EasingStyle.Linear), {CFrame = CFrame.new(dds[1].Position)})
+				strg:Play()
+				EndAutofarm.Event:Connect(function()
+					strg:Cancel()
+				end)
+				while dds[1]:FindFirstChild("TouchInterest") do
+					wait()
+				end
+				strg:Cancel()
+				wait(0.0001)
+			end
+		else
+			wait(0.3)
+		end
+		wait(0.0001)
+	end
+end)
+
+CollectR = false
+function CollectrRareEggs()
+	while CollectR do
+		if CContainer() and Player:GetAttribute("Alive") then
+			for _, v2 in pairs(CContainer():GetChildren()) do
+				if v2:GetAttribute("CoinID") == "RareEgg" then
+					if v2:FindFirstChildOfClass("MeshPart").Transparency < 0.6 then
+						local timer = 25
+						while timer > 0 do
+							Player.Character.HumanoidRootPart.CFrame = v2.CFrame
+							wait()
+							timer -= 1
+						end
+						if FullEggBag then
+							TP(SPP)
+						end
+					end
+				end
+			end
+		end
+		wait(0.3)
+	end
+end
+
+function CollectRareEggsFunction()
+	if not CollectR then
+		CollectR = true
+		F2Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		CollectrRareEggs()
+	else
+		CollectR = false
+		F2Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+	end
+end
+
+KASM = false
+function KillAllMurder()
+	if not KASM then
+		KASM = true
+		F3Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+	else
+		KASM = false
+		F3Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+	end
+end
+
+function CloseQM()
+	Frame2[1].Visible = false
+end
+
+function CloseOpenMain()
+	if Frame1.Visible then
+		for _, u in J do
+			u.Visible = false
+		end
+		TweenService:Create(Frame1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(50 / Resolution[1], 0, 50 / Resolution[2], 0)})
+		TweenService:Create(Name1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 1, 0)})
+		TweenService:Create(Close, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 1, 0), Rotation = -90})
+	else
+		TweenService:Create(Frame1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0)})
+		TweenService:Create(Name1, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 0.2, 0)})
+		TweenService:Create(Close, TweenInfo.new(0.8, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 0.2, 0), Rotation = 90})
+		for _, u in J do
+			u.Visible = true
+		end
+	end
+end
+
+ImproveFPSS = false
+function ImproveFPSN1()
+	if not ImproveFPSS then
+		ImproveFPSS = true
+		F4Button[1].BackgroundColor3 = Color3.new(0, 1, 0)
+		RunService:Set3dRenderingEnabled(false)
+	else
+		ImproveFPSS = false
+		F4Button[1].BackgroundColor3 = Color3.new(1, 0, 0)
+		RunService:Set3dRenderingEnabled(true)
+	end
+end
+
+infotext = {
+	"This feature kill all players with knife(if you murder) when you collected 20 eggs. Do not use this feature unless you have collected all the rare eggs.",
+	"This feature increases your fps by disabling 3D rendering. Useful on emulators"
+}
+function QM1O()
+	QMText.Text = infotext[1]
+	Frame2[1].Visible = true
+end
+
+function QM2O()
+	QMText.Text = infotext[2]
+	Frame2[1].Visible = true
+end
+
+Close.MouseButton1Click:Connect(CloseOpenMain)
+Close2.MouseButton1Click:Connect(CloseQM)
+F1Button[1].MouseButton1Click:Connect(EnableAutoFarm)
+F2Button[1].MouseButton1Click:Connect(CollectRareEggsFunction)
+F3Button[1].MouseButton1Click:Connect(KillAllMurder)
+F4Button[1].MouseButton1Click:Connect(ImproveFPSN1)
+F3QuestionMark.MouseButton1Click:Connect(QM1O)
+F4QuestionMark.MouseButton1Click:Connect(QM2O)
+
+for Configname, Configvalue in pairs(MM2Settings) do
+	if Configname == "AntiAfk" and Configvalue == true then
+	elseif Configname == "CollectEggs" and Configvalue == true then
+		EnableAutoFarm()
+	elseif Configname == "CollectRareEggs" and Configvalue == true then
+		CollectRareEggsFunction()
+	elseif Configname == "KillAllMurder" and Configvalue == true then
+		KillAllMurder()
+	elseif Configname == "ImproveFPS" and Configvalue == true then
+		ImproveFPSN1()
+	end
+end
