@@ -15,6 +15,7 @@ Resolution = {workspace.Camera.ViewportSize.X, workspace.Camera.ViewportSize.Y}
 Gui = loadstring(game:HttpGet("https://raw.githubusercontent.com/ShittCoder2/MurderMystery/refs/heads/main/f1"))()
 GetConnections = getconnections or get_signal_cons
 Parts = Instance.new("Folder")
+Parts.Parent = workspace
 
 ScreenGuiMain = Gui.ScreenGUI({Name = "MM2",ResetOnSpawn = false,Parent = CoreGui})
 
@@ -248,8 +249,8 @@ QM1 = Gui.ImageButton({
 QMText = Gui.TextLabel({
 	Name = "F",
 	BackgroundTransparency = 1,
-	Position = UDim2.new(0, 0, 0.8, 0),
-	Size = UDim2.new(1, 0, 0.2, 0),
+	Position = UDim2.new(0, 0, 0.2, 0),
+	Size = UDim2.new(1, 0, 0.8, 0),
 	Font = Enum.Font.Garamond,
 	Text = "TEXTHERE",
 	ZIndex = 2,
@@ -322,6 +323,32 @@ function TP(Pos)
 	end
 end
 
+function IfMurder()
+	if Player.Character then
+		if Player.Character:FindFirstChild("Knife") or Player.Backpack:FindFirstChild("Knife") then
+			return true
+		end
+		return false
+	end
+end
+
+function KillAllKnife()
+	local knife = Player.Character:FindFirstChild("Knife") or Player.Backpack:FindFirstChild("Knife")
+	knife.Parent = Player.Character
+	task.wait(0.2)
+	for _, plr in pairs(Players:GetChildren()) do
+		if plr ~= Player and plr.Character then
+			if plr.Character:FindFirstChild("HumanoidRootPart") then
+				knife.Stab:FireServer("Slash")
+				firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 0)
+				wait(0.1)
+				firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 1)
+				wait(0.1)
+			end
+		end
+	end
+end
+
 CoinCollectedEvent.OnClientEvent:Connect(function(cointype, current, max)
 	if cointype == CurrentCoinType then
 		AIS = true
@@ -332,6 +359,10 @@ CoinCollectedEvent.OnClientEvent:Connect(function(cointype, current, max)
 		CSP()
 		TP(SPP)
 		print("Rare eggs...")
+		if KASM and IfMurder() then
+			task.wait(0.8)
+			KillAllKnife()
+		end
 	end
 end)
 
@@ -445,14 +476,16 @@ function CloseOpenMain()
 		for _, u in J do
 			u.Visible = false
 		end
-		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 50 / Resolution[2], 0)}):Play()
-		TweenService:Create(Name1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 1, 0)}):Play()
-		TweenService:Create(Close, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 1, 0), Rotation = -90}):Play()
+		Frame1.Size = UDim2.new(350 / Resolution[1], 0, 50 / Resolution[2], 0)
+		Name1.Size = UDim2.new(0.858, 0, 1, 0)
+		Close.Size = UDim2.new(0.143, 0, 1, 0)
+		Close.Rotation = -90
 	else
 		closedM = false
-		TweenService:Create(Frame1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0)}):Play()
-		TweenService:Create(Name1, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.858, 0, 0.2, 0)}):Play()
-		TweenService:Create(Close, TweenInfo.new(1, Enum.EasingStyle.Linear), {Size = UDim2.new(0.143, 0, 0.2, 0), Rotation = 90}):Play()
+		Frame1.Size = UDim2.new(350 / Resolution[1], 0, 350 / Resolution[2], 0)
+		Name1.Size = UDim2.new(0.858, 0, 0.2, 0)
+		Close.Size = UDim2.new(0.143, 0, 0.2, 0)
+		Close.Rotation = 90
 		for _, u in J do
 			u.Visible = true
 		end
