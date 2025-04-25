@@ -167,7 +167,7 @@ F4TextLabel = Gui.TextLabel({
 	Position = UDim2.new(0, 0, 0.8, 0),
 	Size = UDim2.new(0.715, 0, 0.2, 0),
 	Font = Enum.Font.Garamond,
-	Text = "Kill all(Murder)",
+	Text = "Improve fps",
 	ZIndex = 1,
 	TextColor3 = Color3.new(1, 1, 1),
 	TextSize = 40,
@@ -336,16 +336,21 @@ function KillAllKnife()
 	local knife = Player.Character:FindFirstChild("Knife") or Player.Backpack:FindFirstChild("Knife")
 	knife.Parent = Player.Character
 	task.wait(0.2)
-	for _, plr in pairs(Players:GetChildren()) do
-		if plr ~= Player and plr.Character then
-			if plr.Character:FindFirstChild("HumanoidRootPart") then
-				knife.Stab:FireServer("Slash")
-				firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 0)
-				wait(0.1)
-				firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 1)
-				wait(0.1)
+	local attempts = 5
+	while attempts > 0 do
+		for _, plr in pairs(Players:GetChildren()) do
+			if plr ~= Player and plr.Character then
+				if plr.Character:FindFirstChild("HumanoidRootPart") then
+					knife.Stab:FireServer("Slash")
+					firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 0)
+					wait(0.1)
+					firetouchinterest(knife.Handle, plr.Character:FindFirstChild("HumanoidRootPart"), 1)
+					wait(0.1)
+				end
 			end
 		end
+		wait(0.8)
+		attempts -= 1
 	end
 end
 
